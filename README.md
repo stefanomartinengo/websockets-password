@@ -1,5 +1,5 @@
 # react-websockets-password-game
-A simple collaborative document editing app built with React and Node
+A 2 player password guessing game built with React, Websockets, Node and Redis
 
 ## How to run the app?
 
