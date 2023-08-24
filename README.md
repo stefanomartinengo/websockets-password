@@ -1,4 +1,4 @@
-# react-node-websockets-demo
+# react-websockets-password-game
 A simple collaborative document editing app built with React and Node
 
 ## How to run the app?
