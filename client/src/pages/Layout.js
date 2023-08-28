@@ -22,7 +22,7 @@ import useWebSocket, { ReadyState } from 'react-use-websocket';
  * 
  */
 
-const WS_URL = 'ws://127.0.0.1:8000';
+const WS_URL = 'ws://localhost:8000';
 
 
 function Layout() {
