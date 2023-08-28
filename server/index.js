@@ -9,9 +9,12 @@ require('dotenv').config();
 // Spinning the http server, the WebSocket server, and initiating Redis.
 const server = http.createServer();
 const wsServer = new WebSocketServer({ server });
-const port = 8000;
+const port = 3080;
 const words = ['Banana','Whisper','Sunshine','Puzzle','Cookie','Tornado','Unicorn','Jazz','Moonlight','Giggles','Backpack','Secret','Dinosaur','Bubbles','Enchanted','Magic','Pancake','Flamingo','Pineapple']
-let redis = createClient({url: process.env.REDIS_CONNECTION_URL} );
+const redis = createClient({
+  url: process.env.REDIS_CONNECTION_URL
+});
+console.log('redis: ', redis);
 redis.on('error', err => console.log('Redis Client Error', err));
 server.listen(port, async () => {
   await redis.connect();
@@ -20,7 +23,6 @@ server.listen(port, async () => {
 
 const clients = {}; // I'm maintaining all active connections in this object
 const users = {}; // maintaining all active users in this object
-
 
 let currentGameRoom = '';
 let currentGameData = {};
