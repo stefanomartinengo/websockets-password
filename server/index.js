@@ -2,6 +2,7 @@ const { WebSocket, WebSocketServer } = require('ws');
 const http = require('http');
 const uuidv4 = require('uuid').v4;
 const { createClient } = require('redis');
+require('dotenv').config();
 
 // Make interval function accessible globally so that we can reuse it for the 'correct word' function
 
@@ -10,7 +11,7 @@ const server = http.createServer();
 const wsServer = new WebSocketServer({ server });
 const port = 8000;
 const words = ['Banana','Whisper','Sunshine','Puzzle','Cookie','Tornado','Unicorn','Jazz','Moonlight','Giggles','Backpack','Secret','Dinosaur','Bubbles','Enchanted','Magic','Pancake','Flamingo','Pineapple']
-let redis = createClient();
+let redis = createClient({url: process.env.REDIS_CONNECTION_URL} );
 redis.on('error', err => console.log('Redis Client Error', err));
 server.listen(port, async () => {
   await redis.connect();
